@@ -1,0 +1,32 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        title My Jobs History
+        script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js")
+        script(src='/controllers/jobs-search-from-parameters/job-search-from-query.client.controller.js')
+        script(src='/controllers/jobs-search-from-parameters/job-search-from-query.client.service.js')
+        script(src='/controllers/job-search-form-query.client.cores.js')
+    body
+        div(ng-app='Job-Search-Query')
+            h2  #{username} Jobs List
+            div(ng-controller='JobsSearchController as jobCtrl')
+                div(ng-repeat="job in MyJobsList | orderBy: '- createdOn'")
+                    div(data='{{job._id}}')
+                        p {{job.title}}
+                        p {{job.category}}
+                        p {{job.city}}
+                        p {{job.state}}
+                        p {{job.country}}
+                        span
+                            strong From
+                        p {{job.startDate}}
+                        span
+                            strong To
+                        p {{job.endDate}}
+                        strong Created On
+                        p {{job.createdOn}}
+                        span
+                            strong description
+                        p {{job.description}}
+                        strong ****************************

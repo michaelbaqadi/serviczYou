@@ -1,0 +1,64 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        title Account Profile
+        script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js')
+        script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js')
+        script(src='//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js')
+
+        //Active Job + Jobs History
+        script(src= "/controllers/Account-Profile-Active-Jobs/account-profile-active-jobs.client.controller.js")
+        script(src= "/controllers/Account-Profile-Active-Jobs/account-profile-active-jobs.client.service.js")
+        //Reviews
+        script(src= "/controllers/account-profile-reviews/account-profile-reviews.client.controller.js")
+        script(src= "/controllers/account-profile-reviews/account-profile-reviews.client.service.js")
+        script(src = "controllers/account-profile.client.cores.js")
+
+        // Profile Summary
+        script(src= "/controllers/Profile-Info/profile-summary.client.controller.js")
+        script(src= "/controllers/Profile-Info/profile-summary.client.service.js")
+        script(src = "controllers/account-profile.client.cores.js")
+
+        link(href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', rel='stylesheet')
+        link(href='Flat-UI/css/vendor/bootstrap.min.css', rel='stylesheet')
+        // Loading Flat UI
+        link(href='Flat-UI/css/flat-ui.css', rel='stylesheet')
+
+        script(src='bootflat/js/bootstrap-tagsinput.min.js')
+        script(src='bootflat/js/bootstrap-tagsinput-angular.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js')
+        script(src='bootflat/js/bootstrap-tagsinput.min.js')
+        script(src='bootflat/js/bootstrap-tagsinput-angular.js')
+        script(src='bootflat/js/custom.js')
+
+        body(ng-app='UserAccount')
+            div(ng-controller='ActiveJobsController as activeJobsCtrl')
+                form(ng-submit='createNewJob()')
+                    //| job assignee
+                    //input(ng-model='jobData.jobAssignee', type='text')
+                    |         Title
+                    input(ng-model='jobData.title', type='text')
+                    |         Description
+                    input(ng-model='jobData.description', type='text')
+                    //|         price
+                    //input(ng-model='jobData.price', type='text')
+                    |         Period From
+                    input(ng-model='jobData.startDate', type='date')
+                    |         To
+                    input(ng-model='jobData.endDate', type='date')
+                    |         category
+                    select(data-ng-model='jobData.category', data-ng-options="a.name group by a.type for a in activities")
+                    |   city
+                    input(ng-model='jobData.city', type='text')
+                    |   state
+                    input(ng-model='jobData.state', type='text')
+                    |   country
+                    input(ng-model='jobData.country', type='text')
+                    |   zipCode
+                    input(ng-model='jobData.zipCode', type='text')
+                    button(type='submit') Create Your Job
+

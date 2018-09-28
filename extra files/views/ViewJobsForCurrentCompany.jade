@@ -1,0 +1,12 @@
+doctype html
+html(lang='en')
+    head
+        include ./includes/JobHeaderTempelate.jade
+        include ./includes/BusinessInfoWithAngular
+        body(ng-app='BusinessDataApp')
+            .site
+                .headerHomePage
+                    include ./includes/HomeHeader
+            .BusinessInfo(ng-controller="BusinessInfoController")
+                include ./includes/CompanyJobs
+                    //Give Your Offer Now

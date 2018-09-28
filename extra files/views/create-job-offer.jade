@@ -1,0 +1,70 @@
+doctype html
+html(lang='en')
+    head
+        meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0')
+        link(rel='shortcut icon', href='images/favicon.ico')
+        link(rel='stylesheet', href='/customstyling/css/style.css', type='text/css', media='all')
+        link(rel='stylesheet', href='/customstyling/css/custom.css', type='text/css', media='all')
+        link(rel='stylesheet', href='/customstyling/css/font-awesome.min.css', type='text/css', media='all')
+        link(rel='stylesheet', href='/customstyling/css/jquery.datetimepicker.css', type='text/css', media='all')
+        link(rel='stylesheet', href='/customstyling/css/chosen.css', type='text/css', media='all')
+        link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Droid+Serif:100,300,400,700,900,300italic,400italic,700italic,900italic', type='text/css', media='all')
+        link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Montserrat:100,300,400,700,900,300italic,400italic,700italic,900italic', type='text/css', media='all')
+        script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js")
+        script(src="//code.jquery.com/jquery-1.11.3.min.js")
+        script(src="//code.jquery.com/jquery-migrate-1.2.1.min.js")
+        script(src='/controllers/job-offer/job-offer-controller.js')
+        script(src='/controllers/job-offer/job-offer-service.js')
+        script(src='/controllers/job-offer.client.cores.js')
+    body(ng-app='JobOffer')
+        .site
+            .headerHomePage
+                include ./includes/HomeHeader
+            .noo-page-heading(ng-controller='jobOfferController')
+                .container-boxed.max.parallax-content
+                    .page-heading-info
+                        h1.page-title
+                            | {{jobDescription.title}}
+                            //span.count 1418 views
+                    .page-sub-heading-info
+                        p.content-meta
+                            span.job-location
+                                i.fa.fa-map-marker
+                                a(href='#')
+                                    em {{jobDescription.city}} , {{jobDescription.state}}
+                            span
+                                time.entry-date(datetime='2015-08-10T09:46:53+00:00')
+                                    i.fa.fa-calendar
+                                    | {{jobDescription.startDate|date:"MM/dd/yyyy 'at' h:mma"}} - {{jobDescription.endDate|date:"MM/dd/yyyy 'at' h:mma"}}
+                            .job-info
+                                        | Vestibulum non risus nunc. Pellentesque dignissim nunc sem. Nam sit amet odio aliquam mi mollis tempor ut eget metus. Pellentesque quis accumsan lorem.
+                                        | Nam sit amet velit sollicitudin, maximus enim sed, pulvinar sem. Aenean sed faucibus leo, sit amet viverra turpis et.
+            .jform
+                .jform-header
+                    .container-boxed.max
+                        .jform-steps
+                            ul.jsteps.jsteps-4
+
+                .jform-body(ng-controller='jobOfferController')
+                    .container-boxed.max
+                        form.form-horizontal(enctype='multipart/form-data')
+                            #step_content_form.jstep-content
+                                .jpanel.jpanel-job-form
+                                    .jpanel-title
+                                        h3 Submit an Offer Today!
+                                    .jpanel-body
+                                        .form-title
+                                            h3 Job Details
+                                        .job-form
+                                            .job-form-detail
+                                                .form-group.row
+                                                    label.col-sm-3.control-label(for='offerValue') Offer Price
+                                                    .col-sm-9
+                                                        input#offerValue.form-control(ng-model='jobOfferData.price' , type='text', value='', name='position', autofocus='', required='')
+                                                .form-group.row
+                                                    label.col-sm-3.control-label(for='desc') Job Description
+                                                    .col-sm-9
+                                                        textarea#desc.form-control(ng-model='jobOfferData.comment' , name='desc', rows='8', placeholder='Describe your job in a few paragraphs')
+                                            .form-actions.form-group.text-center
+                                                button.btn.btn-primary(type='button', ng-click="createJobOffer()") Continue

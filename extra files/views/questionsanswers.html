@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Loading Angularjs -->
+    <script src= "angular.js"></script>
+
+    <script src= "/controllers/job-info/job-info-qa.client.controller.js"></script>
+    <script src= "/controllers/job-info/job-info-qa.client.service.js"></script>
+    <script src= "/controllers/job-info.client.core.js"></script>
+</head>
+<body ng-app="JobInfo">
+<!-- job id: 563453206d675e7c0f8657bc -->
+<div ng-controller="JobInfoQAController">
+    <div ng-repeat = "QAData in QADataList" >
+        <p>{[{QAData.title}]}</p>
+        <p>{[{QAData.question}]}</p>
+    </div>
+    <form ng-submit="submitQuestion()">
+        Question Title: <input type="text" name="jobTitle" ng-model="QAData.title"><br/>
+        <textarea name="question" ng-model="QAData.question" type="text">Enter Question Here...</textarea><br/>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+</body>
+</html>

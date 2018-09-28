@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="angular.js"></script>
+</head>
+<script>
+    angular.module('summaryController', [])
+            .controller('SummaryController', ['$scope','$http','Summary', function($scope,$http,Summary) {
+                $scope.val = '';
+                $scope.summaryData = {};
+
+                $scope.submitSummary = function () {
+                    if ($scope.summaryData) {
+                        $scope.val = this.summaryData.summary;
+                        Summary.updateDBSummary($scope.summaryData);
+                    }
+                }
+
+                Summary.getDBSummary()
+                        .success(function(response) {
+                            if(response){
+                                $scope.summaryData = response[0];
+                            }
+
+                        })
+                        .error(function(response, status) {
+                            console.error('Repos error', status, data);
+                        })
+            }])
+</script>
+<script>
+    angular.module('summaryService', [])
+            .factory('Summary', ['$http',function($http) {
+                return {
+
+                    getDBSummary : function(){
+                        return $http.get('/account/usersummary');
+                    },
+                    updateDBSummary : function(summary) {
+                        return $http.post('/account/summary',summary);
+                    }
+
+                }
+            }]);
+</script>
+
+<script>
+    angular.module('UserAccount',['summaryController','summaryService'])
+</script>
+<body ng-app="UserAccount">
+
+<form ng-submit="submitSummary()" ng-controller="SummaryController">
+    Enter text and hit enter:
+    <input type="text" ng-model="summaryData.summary" name="text" />
+    <input type="submit" id="submit" value="Submit" />
+    <pre>new Text value = {[{val}]}</pre>
+
+</form>
+</body>
+</html>

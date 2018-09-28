@@ -1,0 +1,117 @@
+doctype html
+html
+    head
+        script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js')
+        script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js')
+        script(src='//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js')
+
+        //Active Job + Jobs History
+        script(src= "/controllers/Account-Profile-Active-Jobs/account-profile-active-jobs.client.controller.js")
+        script(src= "/controllers/Account-Profile-Active-Jobs/account-profile-active-jobs.client.service.js")
+        //Reviews
+        script(src= "/controllers/account-profile-reviews/account-profile-reviews.client.controller.js")
+        script(src= "/controllers/account-profile-reviews/account-profile-reviews.client.service.js")
+        script(src = "controllers/account-profile.client.cores.js")
+
+        // Profile Summary
+        script(src= "/controllers/Profile-Info/profile-summary.client.controller.js")
+        script(src= "/controllers/Profile-Info/profile-summary.client.service.js")
+        script(src = "controllers/account-profile.client.cores.js")
+
+        script(src='bootflat/js/bootstrap-tagsinput.min.js')
+        script(src='bootflat/js/bootstrap-tagsinput-angular.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js')
+        script(src='bootflat/js/bootstrap-tagsinput.min.js')
+        script(src='bootflat/js/bootstrap-tagsinput-angular.js')
+        script(src='bootflat/js/custom.js')
+
+        link(href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', rel='stylesheet')
+        link(href='Flat-UI/css/vendor/bootstrap.min.css', rel='stylesheet')
+        // Loading Flat UI
+        link(href='Flat-UI/css/flat-ui.css', rel='stylesheet')
+
+    body(ng-app='UserAccount')
+        nav.navbar.navbar-inverse.navbar-fixed-top
+            .container
+                .navbar-header
+                    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand(href='#') Task-Elemaj
+        .account-page-content
+            header
+                img.profile-picture(class='.img-rounded', src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaM9jo3PBzR6Q2T2qUXdJGzqaSIRm_ZihPvYH4uLSM2EtYDEZUsw')
+                .name-labels
+                    h4 Michael Baqadi
+        div(ng-controller='LabelCtrl')
+            form(ng-submit='addLabel()')
+                .row(style='background-color:#F2F1EF')
+                    .col-sm-3
+                        .panel.panel-primary
+                            .panel-heading
+                                h3.panel-title Labels
+                            .panel-body
+                                bootstrap-tagsinput(ng-model='job.label', type='text', data-role="tagsinput")
+                button(type='submit') MichaelButton
+                //button(type='submit', ng-hide="true")
+        div(ng-controller='TabsDemoCtrl')
+            uib-tabset(justified='true')
+                uib-tab(heading='Summary')
+                    .account-summary(ng-controller="ProfileSummaryController as summaryCtrl")
+                        form(ng-submit='CreateProfileSummary()')
+                            textarea(class = 'profile-summary' ,ng-model='ProfileSummary.summary')
+                            br
+                            input(class = 'submit-summary', type='submit', value = 'Post')
+                uib-tab(heading='Reviews')
+                    .Account-Profile-Reviews(ng-controller="ReviewsController as reviewsCtrl")
+                        div(ng-repeat="review in ReviewsDataList| orderBy:'-dateCreated'")
+                            .review
+                                img.review-img(height="15%", width="15%", src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaM9jo3PBzR6Q2T2qUXdJGzqaSIRm_ZihPvYH4uLSM2EtYDEZUsw")
+                                .review-header
+                                    small.review-author-date
+                                        | Review By {{review.workerUsername}}
+                                        | on  {{review.dateCreated}}
+                                    .review-stars {{review.Stars}}/5
+                                    p.review-body {{review.Review}}
+
+                uib-tab(heading='Active Jobs')
+                    .Account-Profile-Active-Jobs(ng-controller="ActiveJobsController as activeJobsCtrl")
+                        div
+                            table.table.table-hover
+                                thead
+                                    tr
+                                        th Job Title
+                                        th Job Assignee
+                                        th Start Date
+                                        th End Date
+                                        th Status
+                                    tr(ng-repeat="job in ActiveJobsList")
+                                        th {{job.title}}
+                                        th {{job.jobAssignee}}
+                                        th {{job.startDate}}
+                                        th {{job.endDate}}
+                                        th {{job.status}}
+                uib-tab(heading='Jobs History')
+                    .Account-Profile-Active-Jobs(ng-controller="ActiveJobsController as activeJobsCtrl")
+                        div
+                            table.table.table-hover
+                                thead
+                                    tr
+                                        th Job Title
+                                        th Job Assignee
+                                        th Start Date
+                                        th End Date
+                                        th Status
+                                    tr(ng-repeat="job in PastJobsList")
+                                        th {{job.title}}
+                                        th {{job.jobAssignee}}
+                                        th {{job.startDate}}
+                                        th {{job.endDate}}
+                                        th {{job.status}}
+
+

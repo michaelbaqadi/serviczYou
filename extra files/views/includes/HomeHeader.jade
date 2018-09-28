@@ -1,0 +1,69 @@
+header#noo-header.noo-header
+    .navbar-wrapper
+        .navbar.navbar-default.fixed-top.shrinkable
+            .container-boxed.max
+                .navbar-header
+                    h1.sr-only JobMonster
+                    a.navbar-toggle.collapsed(data-toggle='collapse', data-target='.noo-navbar-collapse')
+                        span.sr-only Navigation
+                        i.fa.fa-bars
+                    a.navbar-toggle.member-navbar-toggle.collapsed(data-toggle='collapse', data-target='.noo-user-navbar-collapse')
+                        i.fa.fa-user
+                    a.navbar-brand(href='./')
+                        img.noo-logo-img.noo-logo-normal(src='images/logo-jobmonster.png', alt='')
+                        img.noo-logo-mobile-img.noo-logo-normal(src='images/logo-mobile.png', alt='')
+                nav.collapse.navbar-collapse.noo-user-navbar-collapse
+                    ul.navbar-nav.sf-menu
+                        li
+                            a(href='member.html')
+                                i.fa.fa-sign-in
+                                |  Login
+                        li.button_socical.fb
+                            i.fa.fa-facebook-square
+                            em.fa-facebook-square Login with Facebook
+                        li.button_socical.gg
+                            i.fa.fa-google-plus
+                            em.fa-google-plus Login with Google
+                        li.button_socical.linkedin
+                            i.fa.fa-linkedin-square
+                            em.fa-linkedin-square Login with LinkedIn
+                        li
+                            a(href='member.html')
+                                i.fa.fa-key
+                                |  Register
+                nav.collapse.navbar-collapse.noo-navbar-collapse
+                    ul.navbar-nav.sf-menu
+                        li.align-left
+                            a(href='./') Home
+                        li.align-left
+                            a(href='company.html') Company
+                                ul.sub-menu
+                                    li
+                                        a(href='company-detail.html') Company Details
+                                    li
+                                        a(href='company-detail.html') Add New Deals
+                            li.align-left
+                                a(href='company.html') Jobs
+                                    ul.sub-menu
+                                        li
+                                            a(href='company-detail.html') New Jobs
+                                        li
+                                            a(href='company-detail.html') Your Offers
+                        li.nav-item-member-profile.login-link.align-center
+                            a.member-links.member-login-link(href='#', data-rel='loginModal')
+                                i.fa.fa-sign-in
+                                |  Login
+                            ul.sub-menu.login-socical
+                                li.button_socical.fb
+                                    i.fa.fa-facebook-square
+                                    em.fa-facebook-square Login with Facebook
+                                li.button_socical.gg
+                                    i.fa.fa-google-plus
+                                    em.fa-google-plus Login with Google
+                                li.button_socical.linkedin
+                                    i.fa.fa-linkedin-square
+                                    em.fa-linkedin-square Login with LinkedIn
+                        li.nav-item-member-profile.register-link
+                            a.member-links.member-register-link(href='#', data-rel='registerModal')
+                                i.fa.fa-key
+                                |  Register

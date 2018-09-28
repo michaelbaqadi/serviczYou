@@ -1,0 +1,226 @@
+<!-- This should be removed later-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Profile</title>
+
+    <!-- Loading Bootstrap -->
+    <link href="Flat-UI/css/vendor/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="Flat-UI/css/flat-ui.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    <!-- Loading Angularjs -->
+    <script src= "angular.js"></script>
+
+    <script src= "/controllers/account-profile-reviews/account-profile-reviews.client.controller.js"></script>
+    <script src= "/controllers/account-profile-reviews/account-profile-reviews.client.service.js"></script>
+    <script src= "/controllers/Account-Profile-Active-Jobs/account-profile-active-jobs.client.controller.js"></script>
+    <script src= "/controllers/Account-Profile-Active-Jobs/account-profile-active-jobs.client.service.js"></script>
+    <script src= "/controllers/account-profile.client.core.js"></script>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<style>
+    body{
+        background-color: ghostwhite;
+    }
+    .account-page-content{
+        width : 80%;
+        margin : 0 auto;
+        margin-top : 5em;
+
+    }
+    .review-img{
+        float : left;
+        padding : 1em;
+        min-width : 100px;
+        min-height: 100px;
+    }
+    .review-author-date{
+        font-size: xx-small;
+    }
+    .review-stars{
+        padding : .20em;
+        float : right;
+    }
+    .review{
+        margin-top: 1em;
+        overflow: hidden;
+        background-color: whitesmoke;
+    }
+    .tabs{
+        margin : 0 auto;
+        padding: 2em;
+        padding-left: 0;
+    }
+    header{
+        overflow: hidden;
+        margin-top : 5em;
+
+    }
+    .profile-picture{
+        float : left;
+    }
+    .name-labels{
+        float : left;
+    }
+    .header-right-side{
+        float : right;
+        padding : 0.25em;
+        margin-top: 1em;
+        background-color: transparent;
+    }
+    .header-icon-social-network{
+
+    }
+    .fb-icon{
+        float : left;
+    }
+    .linkdin-icon{
+        margin-left : 1em;
+        margin-right: 1em;;
+    }
+    .google-icon{
+        float : right;
+    }
+    .average-rating{
+        text-align: center;
+        padding-left : 0;
+    }
+    .right-side-icons{
+        overflow: hidden;
+    }
+    .profile-picture{
+        margin-top: 1em;
+     }
+    .Account-Profile-Reviews {
+        margin-top : 1em;
+    }
+    .review-body{
+        margin-top : 0.1em;
+        margin-left : 0.20em;
+        margin-right : 0.40em;
+    }
+    .profile-picture{
+        width: 18%;
+        height: 18%;
+        margin : 1em 1em auto;
+        border-radius: 50%;
+        min-width: 200px;
+        min-height: 200px;;
+    }
+</style>
+<body ng-app="UserAccount">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header" >
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Task-Elemaj</a>
+            </div>
+        </div>
+    </nav>
+    <div class = "account-page-content">
+        <header>
+            <img class = "profile-picture .img-rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaM9jo3PBzR6Q2T2qUXdJGzqaSIRm_ZihPvYH4uLSM2EtYDEZUsw"/>
+            <div class = "name-labels">
+                <h4>Michael Baqadi</h4>
+                <div>
+                    <label>Label A</label>
+                    <label>Label A</label>
+                    <label>Label A</label>
+                    <label>Label A</label>
+                    <label>Label A</label>
+                </div>
+            </div>
+            <div class = "header-right-side">
+                <div class = "right-side-icons">
+                    <img class = "header-icon-social-network fb-icon" src="image/facebook_32.png"/>
+                    <img class = "header-icon-social-network linkdin-icon" src="image/linkedin_32.png"/>
+                    <img class = "header-icon-social-network google-icon" src="image/google_32.png"/>
+                </div>
+                <div class = "average-rating">
+                    <h5>5 reviews</h5>
+                    <h4>5 5 5 5 5</h4>
+                </div>
+            </div>
+        </header>
+        <div class = "account-page-tabs-contents">
+            <!-- This Section Will include all the tabs-->
+
+            <div ng-controller="TabsDemoCtrl">
+                <uib-tabset justified="true">
+                    <uib-tab>XYZ</uib-tab>
+                    <uib-tab heading="SJ">
+                        <div  class = "Account-Profile-Reviews" ng-controller="ReviewsController as reviewsCtrl">
+                            <div ng-repeat="review in ReviewsDataList| orderBy:'-dateCreated'">
+                                <div class = "review">
+                                    <img class = "review-img" height="15%" width="15%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaM9jo3PBzR6Q2T2qUXdJGzqaSIRm_ZihPvYH4uLSM2EtYDEZUsw"/>
+                                    <div class = "review-header">
+                                        <small class = "review-author-date">Review By <strong>{[{review.workerUsername}]}</strong> on {[{review.dateCreated}]}</small>
+                                        <div class = "review-stars">{[{review.Stars}]}/5</div>
+                                    </div>
+                                    <p class = "review-body">{[{review.Review}]}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </uib-tab>
+                    <uib-tab heading="Long Justified">Long Labeled Justified content</uib-tab>
+                </uib-tabset>
+            </div>
+
+
+            <div class = "Account-Profile-Active-Jobs" ng-controller="ActiveJobsController as activeJobsCtrl">
+                <form ng-hide="true"  ng-submit="createNewJob()">
+                    job owner  <input ng-model="jobData.jobOwner" type = "text"/>
+                    <!--job assignee  <input ng-model="jobData.jobAssignee" type = "text"/> -->
+                    title <input ng-model="jobData.title" type = "text"/>
+                    description <input ng-model = "jobData.description" type="text"/>
+                    price <input ng-model="jobData.price" type = "text" />
+                    start date <input ng-model="jobData.startDate" type="date" />
+                    end date <input ng-model="jobData.endDate" type="date" />
+
+                    <button type="createNewJob">Submit Job</button>
+                </form>
+
+                <div>
+                    <table class= "table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Job Title</th>
+                            <th>Job Assignee</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tr ng-repeat = "job in ActiveJobsList" >
+                            <th>{[{job.title}]}</th>
+                            <th>{[{job.jobAssignee}]}</th>
+                            <th>{[{job.startDate}]}</th>
+                            <th>{[{job.endDate}]}</th>
+                            <th>{[{job.status}]}</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Profile</title>
+
+    <!-- Loading Bootstrap -->
+    <link href="Flat-UI/css/vendor/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="bootflat/css/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="bootflat/css/site.min.css">
+
+    <!-- Loading Flat UI -->
+    <link href="Flat-UI/css/flat-ui.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    <!-- Loading Angularjs -->
+    <script src= "angular.js"></script>
+    <script src= "/controllers/job-offer/job-offer-controller.js"></script>
+    <script src= "/controllers/job-offer/job-offer-service.js"></script>
+    <script src= "/controllers/job-offer.client.core.js"></script>
+</head>
+<body ng-app="JobOffer">
+<h2>This is the job</h2>
+<div ng-controller="jobOfferController">
+    <form ng-click="createJobOffer()">
+        JobID  <input type = "number" ng-model="jobOfferData.jobID"/>
+        Price  <input type = "number" ng-model="jobOfferData.price"/>
+        Commnet <input type = "text" ng-model="jobOfferData.comment"/>
+        <input type = "submit" value = "Submit Your Offer"/>
+    </form>
+</div>
+</body>
+</html>

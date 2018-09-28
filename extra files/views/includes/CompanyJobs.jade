@@ -1,0 +1,58 @@
+.container-boxed.max.offset.main-content.single-noo_job
+    .row
+        .noo-main.col-md-8
+            .job-listing
+                .jobs.posts-loop
+                    .posts-loop-title
+                        h3
+                            | Wild West Company has posted
+                            span.text-primary  {{ListJobsMatchesCompany.length}}
+                            |  jobs
+                    .posts-loop-content(ng-repeat="job in ListJobsMatchesCompany")
+                        form
+                            article.noo_job.hentry
+                                .loop-item-wrap
+                                    //.item-featured
+                                        a(href='#')
+                                            img(width='50', height='50', src='images/company/company_50x50.jpg', alt='Wild West Company')
+                                    .loop-item-content
+                                        h2.loop-item-title
+                                            a(href='#') {{job.jobOwner}}
+                                        p.content-meta
+                                            span.job-company
+                                                a(href='#') {{job.category}}
+                                            span.job-location
+                                                i.fa.fa-map-marker
+                                                a(href='#')
+                                                    em {{job.city}},{{job.state}}
+                                            br
+                                            span
+                                                time.entry-date(datetime='2015-08-10T09:46:53+00:00')
+                                                    i.fa.fa-calendar
+                                                    |        {{job.startDate|date:"MM/dd/yyyy 'at' h:mma"}} - {{job.endDate|date:"MM/dd/yyyy 'at' h:mma"}}
+                                    .show-view-more
+                                        //input(type="submit" , value="View Job")
+                                        a.btn.btn-primary(ng-click="goToJobOfferPage(job)") View Job
+                        br
+        .noo-sidebar.col-md-4
+            .noo-sidebar-wrap
+                .company-desc
+                    .company-header
+                        .company-featured
+                            a(href='#')
+                                img(width='110', height='110', src='images/company/company_110x110.jpg', alt='Wild West Company')
+                        h3.company-title
+                            a(href='#') Wild West Company
+                    .company-info
+                        | Vestibulum non risus nunc. Pellentesque dignissim nunc sem. Nam sit amet odio aliquam mi mollis tempor ut eget metus. Pellentesque quis accumsan lorem.
+                        br
+                        |                                        Nam sit amet velit sollicitudin, maximus enim sed, pulvinar sem. Aenean sed faucibus leo, sit amet viverra turpis et.
+                        .job-social.clearfix
+                            span.noo-social-title Connect with us
+                            a.company_website(href='#', target='_blank')
+                                span http://www.wildwest.com
+                            a.noo-icon.fa.fa-facebook(href='#', target='_blank')
+                            a.noo-icon.fa.fa-twitter(href='#', target='_blank')
+                            a.noo-icon.fa.fa-google-plus(href='#', target='_blank')
+                            a.noo-icon.fa.fa-linkedin(href='#', target='_blank')
+                            a.noo-icon.fa.fa-instagram(href='#', target='_blank')

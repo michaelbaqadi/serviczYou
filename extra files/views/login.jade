@@ -1,0 +1,205 @@
+html
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        // Loading Bootstrap
+        link(href='Flat-UI/css/vendor/bootstrap.min.css', rel='stylesheet')
+        // Loading Flat UI
+        link(href='Flat-UI/css/flat-ui.css', rel='stylesheet')
+        link(rel='shortcut icon', href='img/favicon.ico')
+        // Loading Angularjs
+        script(src='angular.js')
+        script(src='/controllers/login.client.controller.js')
+    body
+        nav.navbar.navbar-inverse.navbar-fixed-top
+            .container
+                .navbar-header
+                    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand(href='#') To-Do List
+                //
+                  <div id="navbar" class="navbar-collapse collapse">
+                  <form class="navbar-form navbar-right">
+                  <div class="form-group">
+                  <input type="text" placeholder="Email" class="form-control">
+                  </div>
+                  <div class="form-group">
+                  <input type="password" placeholder="Password" class="form-control">
+                  </div>
+                  <button type="submit" class="btn btn-success">Sign in</button>
+                  </form>
+                  </div>
+        #loginScreen.login-screen
+            .login-form(ng-app='myApp', ng-controller='loginCtrl')
+                form(action='/createuserprofileorlogin', method='post')
+                    .form-group(ng-init="usernameTaken=''")
+                        input#login-name.form-control.login-field(type='text', name='username', placeholder='Username', ng-keyup='usernameCheck()', ng-model='username')
+                        label.login-field-icon.fui-user(for='login-name')
+                        p 					{{usernameTaken}}
+                    .form-group(ng-init="passwordStrength=''")
+                        input#login-pass.form-control.login-field(type='password', name='psw', placeholder='Password', ng-keyup='passwordCheck()', ng-model='password')
+                        label.login-field-icon.fui-lock(for='login-pass')
+                        p 					{{passwordStrength}}
+                    #ifYes(style='display:none')
+                        .form-group
+                            input.form-control.login-field(type='text', name='name', placeholder='First Name')
+                            input.form-control.login-field(type='text', name='name', placeholder='Last Name')
+                        .form-group
+                            input.form-control.login-field(type='email', name='email', placeholder='Email', ng-keyup='emailCheck()', ng-model='email')
+                            p 						{{emailTaken}}
+                        .form-group
+                            input.form-control.login-field(type='number', name='number', placeholder='Number')
+                    div(ng-init='group1=1')
+                        label.radio
+                            input#yesCheck(type='radio', ng-model='group1', onclick='yesnoCheck();', data-toggle='radio', name='group1', value='0')
+                            |  New User
+                            br
+                        label.radio
+                            input#noCheck(type='radio', ng-model='group1', onclick='yesnoCheck();', data-toggle='radio', name='group1', value='1', checked='')
+                            |  Sign In
+                            br
+                    input.btn.btn-primary.btn-lg.btn-block(type='submit', value='Submit', ng-disabled='submit')
+                    a.login-link(href='#') Lost your password?
+        .well
+            #myCarousel.carousel.slide
+                // Carousel items
+                .carousel-inner
+                    .item.active
+                        .row
+                            .col-sm-3
+                                a.thumbnail(href='#x')
+                                    img.img-responsive(src='https://s3-ap-southeast-2.amazonaws.com/myljhooker/v2%2Fimages%2Farticles%2FSelling%20Article%20Images%2Fbathroom-1.jpg', alt='Image')
+                            .col-sm-3
+                                a.thumbnail(href='#x')
+                                    img.img-responsive(src='http://www.deervalleylimousine.com/blog/wp-content/uploads/2014/08/limo-driver2.jpg', alt='Image')
+                            .col-sm-3
+                                a.thumbnail(href='#x')
+                                    img.img-responsive(src='http://www.vanderbilt.edu/isss/wp-content/uploads/grocery-store.jpg', alt='Image')
+                            .col-sm-3
+                                a.thumbnail(href='#x')
+                                    img.img-responsive(src='http://www.indemandhandyman.com/ikea_furniture_assembly_charlotte_nc.jpg', alt='Image')
+                        // /row
+                    // /item
+                    .item
+                        .row
+                            .col-sm-3
+                                a.thumbnail(href='#x')
+                                    img.img-responsive(src='http://placehold.it/250x250', alt='Image')
+                            .col-sm-3
+                                a.thumbnail(href='#x')
+                                    img.img-responsive(src='http://placehold.it/250x250', alt='Image')
+                            .col-sm-3
+                                a.thumbnail(href='#x')
+                                    img.img-responsive(src='http://placehold.it/250x250', alt='Image')
+                            .col-sm-3
+                                a.thumbnail(href='#x')
+                                    img.img-responsive(src='http://placehold.it/250x250', alt='Image')
+                        // /row
+                    // /item
+                    .item
+                        .row
+                            .col-sm-3
+                                a.thumbnail(href='#x')
+                                    img.img-responsive(src='http://placehold.it/250x250', alt='Image')
+                            .col-sm-3
+                                a.thumbnail(href='#x')
+                                    img.img-responsive(src='http://placehold.it/250x250', alt='Image')
+                            .col-sm-3
+                                a.thumbnail(href='#x')
+                                    img.img-responsive(src='http://placehold.it/250x250', alt='Image')
+                            .col-sm-3
+                                a.thumbnail(href='#x')
+                                    img.img-responsive(src='http://placehold.it/250x250', alt='Image')
+                        // /row
+                    // /item
+                // /carousel-inner
+                a.left.carousel-control(href='#myCarousel', data-slide='prev') ‹
+                a.right.carousel-control(href='#myCarousel', data-slide='next') ›
+            // /myCarousel
+        // /well
+        //
+          Marketing messaging and featurettes
+          ==================================================
+        // Wrap the rest of the page in another container to center all the content.
+        .container.marketing
+            // Three columns of text below the carousel
+            .row
+                .col-lg-4
+                    img.img-circle(src='http://budiirawan.com/wp-content/uploads/2014/07/profile-1-circle.png', alt='Generic placeholder image', width='140', height='140')
+                    h2 "One Word: GREAT!"
+                    p
+                        | I am in love with this app since day one. I literally use this app for everything! Why mow the lawn when i can task someone to do it for me? Why bother peeing when I can have someone do it for me? Endless possibilities :)
+                    p
+                        a.btn.btn-default(href='#', role='button') View details »
+                // /.col-lg-4
+                .col-lg-4
+                    img.img-circle(src='http://www.abbieterpening.com/images/circle-profile-pic.png', alt='Generic placeholder image', width='140', height='140')
+                    h2 "MCLOVIN"
+                    p
+                        | McDonalds is literally 8 hours from where I live! I posted a task online and had someone that was going down here bring it for me! Simple transaction. I am eating my fat juicy burger while I am typing this.
+                    p
+                        a.btn.btn-default(href='#', role='button') View details »
+                // /.col-lg-4
+                .col-lg-4
+                    img.img-circle(src='http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=21013827', alt='Generic placeholder image', width='140', height='140')
+                    h2 "To-do List"
+                    p
+                        | I love this app more than the first guy. I am more in love with it than anything in the world! Thats why i am going to get married with this app in Vegas this weekend. I hired people through tasks to arrange all the events.
+                    p
+                        a.btn.btn-default(href='#', role='button') View details »
+                // /.col-lg-4
+            // /.row
+            // START THE FEATURETTES
+            hr.featurette-divider
+            .row.featurette
+                .col-md-7
+                    h2.featurette-heading
+                        | Go on Vacation.
+                        span.text-muted You deserve it!
+                    p.lead
+                        | No more I have to do that one thing before I head off to vacation. Just write down a task and hire someone to do it for you! Because when time is money, your money should be used for pleasure.
+                .col-md-5
+                    img.featurette-image.img-responsive.center-block(src='/image/hawaii.jpg', alt='Generic placeholder image')
+            hr.featurette-divider
+            .row.featurette
+                .col-md-7.col-md-push-5
+                    h2.featurette-heading
+                        | Get some ZZZZZZs.
+                        span.text-muted You know you miss your beauty sleep!
+                    p.lead
+                        | You worked those long hours at work. Why work more? Get someone on that task now! So you can count more sheeps!
+                .col-md-5.col-md-pull-7
+                    img.featurette-image.img-responsive.center-block(src='/image/sleep.jpg', alt='Generic placeholder image')
+            hr.featurette-divider
+            .row.featurette
+                .col-md-7
+                    h2.featurette-heading
+                        | Spend time with your Family.
+                        span.text-muted Now you have time!
+                    p.lead
+                        | Family time matters to everyone. We know that! Take your children to disneyland like they've been waiting for! Take your wife to a romantic getaway! Go out on a family movie night! Endless possibilities!
+                .col-md-5
+                    img.featurette-image.img-responsive.center-block(src='/image/family.png', alt='Generic placeholder image')
+            hr.featurette-divider
+            // /END THE FEATURETTES
+    script(type='text/javascript').
+        function yesnoCheck() {
+            if (document.getElementById('yesCheck').checked)
+            {
+                document.getElementById('ifYes').style.display = 'block';
+                document.getElementById("loginScreen").className = "login-screen-new-user";
+            }
+            else
+            {
+                document.getElementById('ifYes').style.display = 'none';
+                document.getElementById("loginScreen").className = "login-screen";
+            }
+        }
+    // jQuery (necessary for Flat UI's JavaScript plugins)
+    script(src='Flat-UI/js/vendor/jquery.min.js')
+    // Include all compiled plugins (below), or include individual files as needed
+    script(src='Flat-UI/js/vendor/video.js')
+    script(src='Flat-UI/js/flat-ui.min.js')

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search for New Job</title>
+
+    <script src= "angular.js"></script>
+    <script src= "/controllers/jobs-search-from-parameters/job-search-from-query.client.controller.js"></script>
+    <script src= "/controllers/jobs-search-from-parameters/job-search-from-query.client.service.js"></script>
+    <script src= "/controllers/job-search-form-query.client.core.js"></script>
+</head>
+<body>
+    <h3>Hello{{username}}</h3>
+    <div ng-app="Job-Search-Query">
+        <div ng-controller="JobsSearchController as jobCtrl">
+            <form ng-submit="getJobsMatchesParams()">
+                 Job Title: <input ng-model ="jobParams.jobTitle" />
+                 Category : <input ng-model="jobParams.category"/>
+                 username : <input ng-model="jobParams.username"/>
+                <input type="submit" value="Filter Jobs" />
+            </form>
+            <div ng-repeat="job in JobsDataListFromQuery">
+                <div data = {[{job._id}]} ng-click = "moveToSearchPage(job._id)">
+                    <p>{[{job.title}]}</p>
+                    <p>{[{job.price}]}</p>
+                    <p>{[{job.username}]}</p>
+                   <strong>****************************</strong>
+                </div>s
+            </div>
+        </div>
+    </div>
+</body>
+</html>

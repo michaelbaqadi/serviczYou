@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Profile</title>
+
+    <!-- Loading Bootstrap -->
+    <link href="Flat-UI/css/vendor/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="bootflat/css/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="bootflat/css/site.min.css">
+
+    <!-- Loading Flat UI -->
+    <link href="Flat-UI/css/flat-ui.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    <!-- Loading Angularjs -->
+    <script src= "angular.js"></script>
+    <script src= "/controllers/account-profile-reviews/account-profile-reviews.client.controller.js"></script>
+    <script src= "/controllers/account-profile-reviews/account-profile-reviews.client.service.js"></script>
+    <script src= "/controllers/Account-Profile-Active-Jobs/account-profile-active-jobs.client.controller.js"></script>
+    <script src= "/controllers/Account-Profile-Active-Jobs/account-profile-active-jobs.client.service.js"></script>
+    <script src= "/controllers/account-profile.client.core.js"></script>
+    <script src="bootflat/js/bootstrap-tagsinput.min.js"></script>
+    <script src="bootflat/js/bootstrap-tagsinput-angular.js"></script>
+</head>
+<body ng-app="UserAccount">
+<div ng-controller="ActiveJobsController as activeJobsCtrl">
+    <form ng-submit="createNewJob()">
+        job assignee  <input ng-model="jobData.jobAssignee" type = "text"/>
+        title <input ng-model="jobData.title" type = "text"/>
+        description <input ng-model = "jobData.description" type="text"/>
+        price <input ng-model="jobData.price" type = "text" />
+        start date <input ng-model="jobData.startDate" type="date" />
+        end date <input ng-model="jobData.endDate" type="date" />
+        category <input ng-model="jobData.category" type="text"/>
+        <div class="row" class="middle_content" style="background-color:#F2F1EF">
+            <div class="col-sm-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Labels</h3>
+                    </div>
+                    <div class="panel-body">
+                        <input ng-model="jobData.label" type="text" data-role="tagsinput" class="bootstrap-tagsinput"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="createNewJob">Submit Job</button>
+    </form>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+<script src="bootflat/js/bootstrap-tagsinput.min.js"></script>
+<script src="bootflat/js/bootstrap-tagsinput-angular.js"></script>
+<script src="bootflat/js/custom.js"></script>
+</body>
+
+</html>

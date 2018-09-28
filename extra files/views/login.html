@@ -1,0 +1,234 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Loading Bootstrap -->
+    <link href="Flat-UI/css/vendor/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="Flat-UI/css/flat-ui.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    <!-- Loading Angularjs -->
+    <script src= "angular.js"></script>
+    <script src= "/controllers/login.client.controller.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">To-Do List</a>
+        </div>
+        <!--
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </form>
+        </div> -->
+      </div>
+    </nav>
+
+	<div class="login-screen" id="loginScreen">
+		<div class="login-form" ng-app="myApp" ng-controller="loginCtrl">
+			<form action="/createuserprofileorlogin" method="post">
+				<div class="form-group" ng-init="usernameTaken=''">
+					<input type="text" name="username" class="form-control login-field" placeholder="Username" id="login-name" ng-keyup="usernameCheck()" ng-model="username">
+					<label class="login-field-icon fui-user" for="login-name"></label>
+					{[{usernameTaken}]}
+				</div>
+				<div class="form-group" ng-init="passwordStrength=''">
+					<input type="password" name="psw" class="form-control login-field" placeholder="Password" id="login-pass" ng-keyup="passwordCheck()" ng-model="password">
+					<label class="login-field-icon fui-lock" for="login-pass"></label>
+					{[{passwordStrength}]}
+				</div>
+                <div ng-init="userRole=0">
+                    <label class="radio">
+                        <input type="radio" ng-model="userRole" data-toggle="radio" name="userRole" value="0" > Customer<br>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" ng-model="userRole" data-toggle="radio" name="userRole" value="1" checked> Business<br>
+                    </label>
+                </div>
+				<div id="ifYes" style="display:none">
+					<div class="form-group">
+						<input type="text" name="name" class="form-control login-field" placeholder="First Name">
+						<input type="text" name="name" class="form-control login-field" placeholder="Last Name">
+					</div>
+					<div class="form-group">
+						<input type="email" name="email" class="form-control login-field" placeholder="Email" ng-keyup="emailCheck()" ng-model="email">
+						{[{emailTaken}]}
+					</div>
+					<div class="form-group">
+						<input type="number" name="number" class="form-control login-field" placeholder="Number">
+					</div>
+				</div>
+				<div ng-init="group1=1">
+					<label class="radio">
+						<input type="radio" ng-model="group1" onclick="yesnoCheck();" id="yesCheck"  data-toggle="radio" name="group1" value="0" > New User<br>
+					</label>
+					<label class="radio">
+						<input type="radio" ng-model="group1" onclick="yesnoCheck();" id="noCheck" data-toggle="radio" name="group1" value="1" checked> Sign In<br>
+					</label>
+				</div>
+				<input class="btn btn-primary btn-lg btn-block" type="submit" value="Submit"
+				ng-disabled="submit">
+            	<a class="login-link" href="#">Lost your password?</a>
+			</form>
+		</div>
+	</div>
+        <div class="well">
+            <div id="myCarousel" class="carousel slide">
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="row">
+                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="https://s3-ap-southeast-2.amazonaws.com/myljhooker/v2%2Fimages%2Farticles%2FSelling%20Article%20Images%2Fbathroom-1.jpg" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.deervalleylimousine.com/blog/wp-content/uploads/2014/08/limo-driver2.jpg" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.vanderbilt.edu/isss/wp-content/uploads/grocery-store.jpg" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.indemandhandyman.com/ikea_furniture_assembly_charlotte_nc.jpg" alt="Image" class="img-responsive"></a>
+                            </div>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/item-->
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
+                            </div>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/item-->
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
+                            </div>
+                            <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" class="img-responsive"></a>
+                            </div>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/item-->
+                </div>
+                <!--/carousel-inner--> <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+            </div>
+            <!--/myCarousel-->
+        </div>
+        <!--/well-->
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="http://budiirawan.com/wp-content/uploads/2014/07/profile-1-circle.png" alt="Generic placeholder image" width="140" height="140">
+          <h2>"One Word: GREAT!"</h2>
+          <p>I am in love with this app since day one. I literally use this app for everything! Why mow the lawn when i can task someone to do it for me? Why bother peeing when I can have someone do it for me? Endless possibilities :)</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="http://www.abbieterpening.com/images/circle-profile-pic.png" alt="Generic placeholder image" width="140" height="140">
+          <h2>"MCLOVIN"</h2>
+          <p>McDonalds is literally 8 hours from where I live! I posted a task online and had someone that was going down here bring it for me! Simple transaction. I am eating my fat juicy burger while I am typing this.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=21013827" alt="Generic placeholder image" width="140" height="140">
+          <h2>"To-do List"</h2>
+          <p>I love this app more than the first guy. I am more in love with it than anything in the world! Thats why i am going to get married with this app in Vegas this weekend. I hired people through tasks to arrange all the events.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+          <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Go on Vacation. <span class="text-muted">You deserve it!</span></h2>
+          <p class="lead">No more I have to do that one thing before I head off to vacation. Just write down a task and hire someone to do it for you! Because when time is money, your money should be used for pleasure.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" src="/image/hawaii.jpg" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading">Get some ZZZZZZs. <span class="text-muted">You know you miss your beauty sleep!</span></h2>
+          <p class="lead">You worked those long hours at work. Why work more? Get someone on that task now! So you can count more sheeps!</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <img class="featurette-image img-responsive center-block" src="/image/sleep.jpg" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Spend time with your Family. <span class="text-muted">Now you have time!</span></h2>
+          <p class="lead">Family time matters to everyone. We know that! Take your children to disneyland like they've been waiting for! Take your wife to a romantic getaway! Go out on a family movie night! Endless possibilities!</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" src="/image/family.png" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+</body>
+<script type="text/javascript">
+  function yesnoCheck() {
+    	if (document.getElementById('yesCheck').checked) 
+    	{
+        	document.getElementById('ifYes').style.display = 'block';
+        	document.getElementById("loginScreen").className = "login-screen-new-user";
+    	}
+    	else
+    	{
+    		document.getElementById('ifYes').style.display = 'none';
+    		document.getElementById("loginScreen").className = "login-screen";
+    	}
+	}
+</script>
+<!-- jQuery (necessary for Flat UI's JavaScript plugins) -->
+<script src="Flat-UI/js/vendor/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="Flat-UI/js/vendor/video.js"></script>
+<script src="Flat-UI/js/flat-ui.min.js"></script>
